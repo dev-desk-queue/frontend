@@ -5,8 +5,8 @@ class Login extends Component {
 
   state = {
     creds: {
-      username: '',
-      password: ''
+      username: 'ad',
+      password: 'pass'
     }
   }
 
@@ -35,6 +35,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.state.creds)
     return (
       <div className='loginWrapper'>
         <form onSubmit={this.login}>
@@ -62,6 +63,8 @@ class Login extends Component {
     )
   }
 }
+
+export default Login ;
 
 const mapStateToProps = state => {
   return {

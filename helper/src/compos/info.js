@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Sign from './sign'
+import Sign from './sign';
+import Login from './login';
+
 
 const info = [{username:'first',passcode:'pass',},]
 
@@ -23,10 +25,12 @@ class Info extends React.Component {
 
     return (
       <div>
-        {console.log(this.state.info)}
+
         <Sign 
         addInfo={this.addInfo}
         />
+
+        <Login />
       </div>
     )
   }
