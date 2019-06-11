@@ -2,6 +2,8 @@ import React from 'react';
 
 import Sign from './sign'
 
+const info = [{username:'first',passcode:'pass',},]
+
 class Info extends React.Component {
   constructor(){
     super()
@@ -9,10 +11,11 @@ class Info extends React.Component {
       info
     };
   }
-  addInfo =(e,info)=> {
+
+  addInfo =(e,foo)=> {
     e.preventDefault()
     const newItem = {
-      username:info
+      username:foo,
     };
     this.setState({info:[...info,newItem]})
   }
@@ -20,8 +23,9 @@ class Info extends React.Component {
 
     return (
       <div>
+        {console.log(this.state.info)}
         <Sign 
-        addInfo={this.Info}
+        addInfo={this.addInfo}
         />
       </div>
     )

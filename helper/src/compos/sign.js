@@ -11,7 +11,7 @@ class Sign extends React.Component {
 
   state={
     username:'',
-    passcode:'',
+    // passcode:'',
   };
 
   change =(e)=> {
@@ -22,9 +22,9 @@ class Sign extends React.Component {
     e.preventDefault()
     this.setState({    
       username:'',
-      passcode:'',
+      //passcode:'',
     })
-    this.props.addItem(e,this.state.username);
+    this.props.addInfo(e,this.state.username);
   }
 
   render(){
@@ -47,7 +47,7 @@ class Sign extends React.Component {
         placeholder='passcode'
         value={this.state.passcode}
         onChange={this.change}/>
-        <button onClick={}>register</button>
+        <button onClick={this.Add}>register</button>
       </div>
     )
     }
