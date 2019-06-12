@@ -4,8 +4,9 @@ export const LOG_DATA = 'LOG_DATA';
 
 export const getLogin =(info)=>(dispatch)=> {
   dispatch({type:LOG_DATA});
-  return axios.post('https://devdeskqueue.herokuapp.com/api/',info)
-  .then(res => {res.data.payload});
+  return axios.post('https://devdeskqueue.herokuapp.com/api',info).then(res => {
+    console.log(res)
+  });
 }
 
 export const REG_DATA = 'REG_DATA';
@@ -20,4 +21,4 @@ export const getReg =()=> (dispatch)=> {
   .catch()
 }
 
-export default getLogin;
+ export default getLogin;
