@@ -6,22 +6,30 @@ import {
 } from '../actions';
 
 const initialState ={
-  login:{},
+  login:[],
   grabData:false,
   error:'',
 }
 
 const reducers =(state = initialState,action)=> {
   switch(action.type) {
-    case LOG_DATA:
+    case REG_DATA:
       return{
         ...state,
-        grabData:true
-      } 
+        grabData:true,
+        error:''
+      } ;
+    case REG_DATA_SUCC:
+      return{
+        ...state,
+        grabData:false,
+        login: action.payload
+      };
       default:
       return state;
-    }
-    }
+    };
+  };
+  export default reducers ;
 
     // case REG_DATA:
     //   return{
@@ -45,5 +53,3 @@ const reducers =(state = initialState,action)=> {
     //     error:'',
     //   };
 
-
-export default reducers ;
