@@ -1,49 +1,80 @@
 import React from 'react';
 
-import Sign from './sign';
-import {connect} from 'react-redux';
+
+import { connect } from 'react-redux';
 import getReg from '../actions';
 
-import axios from 'axios';
-import { Route, Redirect, withRouter } from "react-router-dom";
 
 
-
-const info = [{username:'first',passcode:'pass',},]
+// const info = [{username:'first',passcode:'pass',},]
 
 class Info extends React.Component {
-  constructor(){
+  constructor() {
     super()
-    this.state ={
-      info
+    this.state = {
+
+      username: '',
+      password: '',
+      email: '',
+
     };
   }
 
-  addInfo =(e,creds)=> {
+  Add = (e, creds) => {
     e.preventDefault()
-    const newItem = {
-      username:creds.username,
-      passcode:creds.passcode
-    };
-    this.setState({info:[...info,newItem]})
-  }
-  render(){
+    console.log(creds)
+    this.props.getReg(this.state)
+    this.setState({
+      username: '',
+      password: '',
+      email: '',
+    })
 
+  }
+
+
+  change = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+
+  render() {
     return (
       <div>
-        {console.log(this.state.info)}
-        <Sign 
-        addInfo={this.addInfo}
-        />
+        <form onSubmit={this.Add}>
+          <input
+            type='email'
+            name='email'
+            placeholder='email'
+            value={this.state.email}
+            onChange={this.change}
+            required
+          />
+          <input
+            type='text'
+            name='username'
+            placeholder='username'
+            value={this.state.username}
+            onChange={this.change}
+            required
+          />
+          <input
+            type='password'
+            name='password'
+            placeholder='password'
+            value={this.state.password}
+            onChange={this.change}
+            required />
 
-
+          <button onClick={this.Add}>register</button>
+        </form>
       </div>
     )
   }
 }
 
-// export default Info ;
+// const mapStateToProps = state => {
+//   return console.log(state)
+// }
 
-
-
-export default connect(null,{getReg})(Info) 
+export default connect(null, { getReg })(Info) 

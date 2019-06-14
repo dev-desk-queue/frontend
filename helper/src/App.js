@@ -8,13 +8,18 @@ import Helper from './compos/features/helper';
 
 
 
+
+
 function App() {
   return (
     <Router>
+    {console.log(localStorage.getItem("token"))}
       <div className="App">
-        <Route path='/help' component={Helper} />
-          <Route exact path='/login' component={Login}/>
-        <Route exact path='/Protected' component={Info} />
+        
+        <Route path='/signin' component={Info} />
+        <Route exact path='/login' component={Login}/>
+        {/* <Route exact path='/info' component={} /> */}
+        <Route exact path='/help' component={Helper} />
       </div>
     </Router>
   );

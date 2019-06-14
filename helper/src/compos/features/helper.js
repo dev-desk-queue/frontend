@@ -1,29 +1,42 @@
-import React, {} from 'react';
-import '../App.css';
+import React, { } from 'react';
+import '../../App.css';
 
 
 
 class Helper extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      off_topic:[{name:'j',q:'help'},{name:'ko',q:'ok'}],
-      questions:[],
-      answered:[],
+      off_topic: [],
+      questions: '',
+      answered: [],
     }
   }
 
-  touch =(i)=> {
+  change = (e) => {
+    e.preventDefault()
+    this.setState({ questions: e.target.value })
+  }
+
+  ask = (i) => {
+    console.log('click')
     this.setState({})
   }
 
-  render(){
+  render() {
     return (
       <div className='helper_page'>
-        
+        <p>{this.state.questions}</p>
+        <input
+          name='single'
+          placeholder='question'
+          value={this.state.questions}
+          onChange={this.change}
+          required />
+        <button onClick={this.ask}>enter</button>
       </div>
     )
   }
 }
 
-export default Helper ;
+export default Helper;

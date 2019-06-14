@@ -25,7 +25,7 @@ class Login extends Component {
 
   login = e => {
     e.preventDefault();
-    this.props.login(this.state.creds)
+    this.props.getLogin(this.state.creds)
       .then((id) => {
         console.log('Login Successful', id)
         if (id) {
@@ -68,8 +68,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = ({error, grabData}) => ({
-  error,
-  grabData
+
 })
 
-export default connect(mapStateToProps,{getLogin})(Login) 
+export default connect(null,{getLogin})(Login) 
