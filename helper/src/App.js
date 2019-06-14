@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 import Login from './compos/privacy/login';
 import Info from './compos/privacy/info';
@@ -16,7 +16,7 @@ function App() {
     {console.log(localStorage.getItem("token"))}
       <div className="App">
         
-        <Route path='/signin' component={Info} />
+        <Route exact path='/' component={Info} />
         <Route exact path='/login' component={Login}/>
         {/* <Route exact path='/info' component={} /> */}
         <Route exact path='/help' component={Helper} />

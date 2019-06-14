@@ -19,6 +19,8 @@ class Helper extends React.Component {
   }
 
   ask = (i) => {
+    i.preventDefault()
+    
     console.log('click')
     this.setState({})
   }

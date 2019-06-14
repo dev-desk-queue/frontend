@@ -1,4 +1,4 @@
-import React, { Component } from 'react' ;
+import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
@@ -7,34 +7,29 @@ import getLogin from '../actions'
 class Login extends Component {
 
   state = {
-    creds: {
-      username: 'ad',
-      password: 'pass'
-    }
+    username: 'ad',
+    password: 'pass'
   }
 
 
   handleChange = e => {
     this.setState({
-      creds: {
-        ...this.state.creds,
-        [e.target.name]: e.target.value
-      }
+      [e.target.name]: e.target.value
     });
   }
 
-  login = e => {
+  login = (e, creds) => {
     e.preventDefault();
-    this.props.getLogin(this.state.creds)
-      .then((id) => {
-        console.log('Login Successful', id)
-        if (id) {
-          this.props.history.push('/protected')
-        } else {
-          alert('No User Found')
-          this.props.history.push('/login')
-        }
-      })
+    this.props
+    .getLogin(this.state).then((id) => {
+      console.log('Login Successful', id)
+      if (id) {
+        this.props.history.push('/protected')
+      } else {
+        alert('No User Found')
+        this.props.history.push('/login')
+      }
+    })
   }
 
   render() {
@@ -67,8 +62,8 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = ({error, grabData}) => ({
+const mapStateToProps = ({ error, grabData }) => ({
 
 })
 
-export default connect(null,{getLogin})(Login) 
+export default connect(null, { getLogin })(Login) 
