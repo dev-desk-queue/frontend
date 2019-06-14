@@ -21,7 +21,8 @@ class Login extends Component {
   login = (e, creds) => {
     e.preventDefault();
     this.props
-    .getLogin(this.state).then((id) => {
+    .getLogin(this.state)
+    .then((id) => {
       console.log('Login Successful', id)
       if (id) {
         this.props.history.push('/protected')

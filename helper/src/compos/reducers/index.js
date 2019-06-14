@@ -1,6 +1,7 @@
 import {
   LOG_DATA,
   LOG_DATA_SUCC,
+  LOG_DATA_FAIL,
   REG_DATA,
   REG_DATA_SUCC,
   REG_DATA_FAIL,
@@ -38,6 +39,11 @@ const reducers = (state = initialState, action) => {
       return {
         grabData: false,
         token: action.payload,
+      }
+    case LOG_DATA_FAIL:
+      return{
+        grabData:false,
+        error:''
       }
     case REG_DATA:
       return {
