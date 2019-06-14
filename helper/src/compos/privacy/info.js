@@ -1,7 +1,12 @@
 import React from 'react';
 
 import Sign from './sign';
-import Login from './login';
+import {connect} from 'react-redux';
+import getReg from '../actions';
+
+import axios from 'axios';
+import { Route, Redirect, withRouter } from "react-router-dom";
+
 
 
 const info = [{username:'first',passcode:'pass',},]
@@ -14,10 +19,11 @@ class Info extends React.Component {
     };
   }
 
-  addInfo =(e,foo)=> {
+  addInfo =(e,creds)=> {
     e.preventDefault()
     const newItem = {
-      username:foo,
+      username:creds.username,
+      passcode:creds.passcode
     };
     this.setState({info:[...info,newItem]})
   }
@@ -25,15 +31,19 @@ class Info extends React.Component {
 
     return (
       <div>
-
+        {console.log(this.state.info)}
         <Sign 
         addInfo={this.addInfo}
         />
 
-        <Login />
+
       </div>
     )
   }
 }
 
-export default Info ;
+// export default Info ;
+
+
+
+export default connect(null,{getReg})(Info) 

@@ -1,17 +1,12 @@
 import React from 'react';
 
-
 class Sign extends React.Component {
-  // constructor(){
-  //   super()
-  //   this.state = {
-  //     username:"",
-  //   }
-  // }
+
 
   state={
+    email:'',
     username:'',
-    // passcode:'',
+    passcode:'',
   };
 
   change =(e)=> {
@@ -20,41 +15,56 @@ class Sign extends React.Component {
 
   Add =(e)=>{
     e.preventDefault()
-    this.setState({    
-      username:'',
-      //passcode:'',
-    })
-    this.props.addInfo(e,this.state.username);
+    // this.setState({    
+    //   username:'',
+    //   passcode:'',
+    // })
+    this.props.addInfo(e,this.state)
+    //  this.props.history.push('/login')
+
+    console.log(e,this.state,this.props)
+    //return <Redirect to="/login"  />
+    
   }
 
   render(){
     return(
       <div className='register'>
+        <form onSubmit={this.Add}>
+
         <h2>
         {this.state.username}
         </h2>
-          
         <input
         type='text'
         name='username'
         placeholder='username'
         value={this.state.username}
         onChange={this.change}
+        required
         />
         <input 
         type='password'
         name='passcode'
         placeholder='passcode'
         value={this.state.passcode}
-        onChange={this.change}/>
-        <button onClick={this.Add}>register</button>
+        onChange={this.change}
+        required/>
+
+        <button>register</button>
+        </form>
       </div>
     )
     }
 }
+ export default Sign ;
 
-export default Sign ;
-
+// const mapStateToProps = state =>{
+//   return {
+//     login:state
+//   }
+// }
+//export default Sign;
 
 
 
